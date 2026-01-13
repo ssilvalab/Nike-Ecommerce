@@ -1,0 +1,7 @@
+{
+  "name": "Nike Innovation Labs // OS",
+  "description": "A high-fidelity, futuristic technical interface showcasing the next generation of performance footwear and material science.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
