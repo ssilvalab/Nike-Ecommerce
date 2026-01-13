@@ -87,19 +87,19 @@ const ProductDetail: React.FC = () => {
                 onClick={toggleWishlist}
                 className={`flex-1 flex items-center justify-center border h-16 px-6 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 group relative overflow-hidden ${
                   isWishlisted 
-                  ? 'border-primary bg-primary text-white shadow-[0_0_20px_rgba(19,19,236,0.5)]' 
-                  : 'border-white/10 bg-white/5 text-white/60 hover:border-white/40 hover:bg-white/10'
+                  ? 'border-primary bg-primary text-white shadow-[0_0_25px_rgba(19,19,236,0.6)] scale-[1.02]' 
+                  : 'border-white/10 bg-white/5 text-white/60 hover:border-white/40 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 {/* Background scanning effect for archived state */}
                 {isWishlisted && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full -translate-x-full animate-[marquee_3s_infinite_linear]"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full -translate-x-full animate-[marquee_2.5s_infinite_linear]"></div>
                 )}
                 
                 <span className={`material-symbols-outlined mr-2 transition-all duration-300 ${isWishlisted ? 'fill-1 scale-110 text-white' : 'scale-100'}`}>
                   {isWishlisted ? 'bookmark_added' : 'bookmark'}
                 </span>
-                <span className="relative z-10">
+                <span className="relative z-10 transition-colors duration-300">
                   {isWishlisted ? 'Archived' : 'Archive'}
                 </span>
               </button>
