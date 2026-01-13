@@ -111,7 +111,7 @@ const Collections: React.FC = () => {
 
   const products: Product[] = [
     { id: 'NK-992-AM', name: 'Air_Max_Pulse', type: 'Performance_Module', price: '160.00', img: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_01', stock: 'Stock_OK' },
-    { id: 'JD-023-RT', name: 'Dunk_Low_Mono', type: 'Heritage_Heritage', price: '115.00', img: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_02', stock: 'Stock_OK' },
+    { id: 'JD-023-RT', name: 'Dunk_Low_Mono', type: 'Heritage_Heritage', price: '115.00', img: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_02', stock: 'Stock_OK' },
     { id: 'VP-FLY-30', name: 'Vapor_Elite_X', type: 'Racing_Component', price: '250.00', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_03', stock: 'Critical_Stock' },
     { id: 'PH-MX_V01', name: 'Phantom_Matrix', type: 'Minimalist_Vanguard', price: '285.00', img: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_04', stock: 'Stock_OK' },
     { id: 'NK-AIR-22', name: 'Alpha_Air_V2', type: 'Cushioning_System', price: '180.00', img: 'https://images.unsplash.com/photo-1584735175315-9d5df23860e6?auto=format&fit=crop&q=80&w=800', spec: 'SPEC_05', stock: 'Out_Of_Stock' },

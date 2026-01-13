@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nike Innovation Labs // OS</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231313ec'><path d='M21 7.5c-4.5 0-10.5 3.5-13.5 10.5 0 0 4.5-2.5 8-2.5 3.5 0 5.5 1.5 5.5 1.5s-2.5-9.5-12.5-9.5c-4 0-6.5 2.5-6.5 2.5s3.5-5.5 12-5.5c4.5 0 7 3 7 3z'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
@@ -28,6 +29,7 @@
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'marquee': 'marquee 25s linear infinite',
               'scanline': 'scanline 8s linear infinite',
+              'blink': 'blink 1s step-end infinite',
             },
             keyframes: {
               marquee: {
@@ -37,6 +39,10 @@
               scanline: {
                 '0%': { transform: 'translateY(-100%)' },
                 '100%': { transform: 'translateY(100%)' },
+              },
+              blink: {
+                'from, to': { opacity: '1' },
+                '50%': { opacity: '0' },
               }
             }
           }
@@ -48,6 +54,8 @@
         background-color: #050505;
         color: #ffffff;
         -webkit-font-smoothing: antialiased;
+        margin: 0;
+        overflow-x: hidden;
       }
       .grid-blueprint {
         background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -73,13 +81,29 @@
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
         color: transparent;
       }
+      #root:empty + #loader {
+        display: flex;
+      }
+      #loader {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: #050505;
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'JetBrains Mono', monospace;
+      }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react-router-dom": "https://esm.sh/react-router-dom@7.1.5?external=react,react-dom",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
@@ -87,5 +111,18 @@
 </head>
   <body class="custom-scrollbar">
     <div id="root"></div>
+    <div id="loader">
+      <div class="flex flex-col items-center gap-4">
+        <div class="w-48 h-1 bg-white/10 relative overflow-hidden">
+          <div class="absolute inset-y-0 left-0 bg-primary w-1/2 animate-[marquee_2s_infinite_linear]"></div>
+        </div>
+        <div class="text-[10px] tracking-[0.5em] text-primary uppercase font-bold animate-pulse">
+          Innovation_System_Initializing
+        </div>
+        <div class="text-[8px] text-white/20 uppercase font-mono mt-2">
+          Kernel_V.2.0.4 // Access_Token_Required
+        </div>
+      </div>
+    </div>
   </body>
 </html>
