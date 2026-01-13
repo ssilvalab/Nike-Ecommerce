@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ARViewer from '../components/ARViewer';
@@ -71,7 +70,7 @@ const ProductDetail: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link to="/checkout" className="flex-1 flex items-center justify-center bg-white h-16 px-8 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all shadow-lg hover:shadow-primary/20">
+            <Link to="/checkout" className="flex-1 flex items-center justify-center bg-white h-16 px-8 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all shadow-lg hover:shadow-primary/20 active:scale-[0.98]">
               Initialize Purchase
             </Link>
             
@@ -86,16 +85,23 @@ const ProductDetail: React.FC = () => {
 
               <button 
                 onClick={toggleWishlist}
-                className={`flex-1 flex items-center justify-center border h-16 px-6 text-[10px] font-bold uppercase tracking-[0.2em] transition-all group ${
+                className={`flex-1 flex items-center justify-center border h-16 px-6 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 group relative overflow-hidden ${
                   isWishlisted 
-                  ? 'border-primary bg-primary text-white' 
-                  : 'border-white/10 bg-white/5 text-white/60 hover:border-white/40'
+                  ? 'border-primary bg-primary text-white shadow-[0_0_20px_rgba(19,19,236,0.5)]' 
+                  : 'border-white/10 bg-white/5 text-white/60 hover:border-white/40 hover:bg-white/10'
                 }`}
               >
-                <span className={`material-symbols-outlined mr-2 transition-all ${isWishlisted ? 'fill-1' : ''}`}>
+                {/* Background scanning effect for archived state */}
+                {isWishlisted && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full -translate-x-full animate-[marquee_3s_infinite_linear]"></div>
+                )}
+                
+                <span className={`material-symbols-outlined mr-2 transition-all duration-300 ${isWishlisted ? 'fill-1 scale-110 text-white' : 'scale-100'}`}>
                   {isWishlisted ? 'bookmark_added' : 'bookmark'}
                 </span>
-                {isWishlisted ? 'Archived' : 'Archive'}
+                <span className="relative z-10">
+                  {isWishlisted ? 'Archived' : 'Archive'}
+                </span>
               </button>
             </div>
           </div>
@@ -104,7 +110,7 @@ const ProductDetail: React.FC = () => {
         <div className="flex-1 relative flex justify-center items-center py-10">
           <div className="relative w-full aspect-square max-w-[500px] bg-white/5 rounded-full overflow-hidden flex items-center justify-center">
              <div className="absolute inset-0 grid-blueprint opacity-20"></div>
-             <img src={productImg} alt="Shoe" className="relative z-10 w-full grayscale contrast-125 transform -rotate-12" />
+             <img src={productImg} alt="Shoe" className="relative z-10 w-full grayscale contrast-125 transform -rotate-12 transition-transform duration-1000 hover:rotate-0" />
              <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-primary/20"></div>
              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-primary/20"></div>
              
@@ -147,6 +153,10 @@ const ProductDetail: React.FC = () => {
         }
         .fill-1 {
           font-variation-settings: 'FILL' 1;
+        }
+        @keyframes marquee {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
       `}</style>
     </div>
